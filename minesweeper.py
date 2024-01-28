@@ -21,12 +21,14 @@ class Minesweeper():
             self.grid.append(row_grid)
             self.flagged.append(row_flagged)
         self.set_bomb()
+
     def set_flags(self):
         for i in range(10):
             row_flagged = []
             for i in range(10):
                 row_flagged.append(False)
             self.flagged.append(row_flagged)
+
     def set_bomb(self):
         for i in range(10):
             row_bomb = []
@@ -36,18 +38,20 @@ class Minesweeper():
                 else:
                     row_bomb.append(False)
             self.bomb.append(row_bomb)
-            
+
     def print_grid(self):
         for i in range(10):
             print(self.grid[i])
         print()
-        for i in range(10): 
+        for i in range(10):
             print(self.bomb[i])
         print()
-        for i in range(10):    
+        for i in range(10):
             print(self.flagged[i])
+
     def get_x(self):
         self.x = input("Click Square(x): ")
+
     def get_y(self):
         self.y = input("Click Square(y): ")
 
@@ -56,9 +60,56 @@ class Minesweeper():
             for j in range(10):
                 if (self.bomb[i][j]):
                     self.game = False
+    # (5,5) check (4,5)(4,4)(5,4)...
 
-    def around(self):
-    
+    def around(self, x, y):
+        bombCount = 0
+        if (self.x == 1 and self.y != 1):
+            if (self.bomb[self.x][self.y-1]):
+                bombCount += 1
+            elif (self.bomb[self.x][self.y+1]):
+                bombCount += 1
+            elif (self.bomb[self.x+1][self.y+1]):
+                bombCount += 1
+            elif (self.bomb[self.x+1][self.y-1]):
+                bombCount += 1
+            elif (self.bomb[self.x+1][self.y]):
+                bombCount += 1
+        elif (self.x != 1 and self.y == 1):
+            if (self.bomb[self.x-1][self.y]):
+                bombCount += 1
+            elif (self.bomb[self.x+1][self.y]):
+                bombCount += 1
+            elif (self.bomb[self.x+1][self.y+1]):
+                bombCount += 1
+            elif (self.bomb[self.x-1][self.y+1]):
+                bombCount += 1
+            elif (self.bomb[self.x+1][self.y+1]):
+                bombCount += 1
+        elif (self.x == 1 and self.y == 1):
+            if (self.bomb[self.x + 1][self.y]):
+                bombCount += 1
+            elif (self.bomb[self.x][self.y+1]):
+                bombCount += 1
+            elif (self.bomb[self.x+1][self.y+1]):
+                bombCount += 1
+        else:
+            if (self.bomb[self.x][self.y-1]):
+                bombCount += 1
+            elif (self.bomb[self.x][self.y+1]):
+                bombCount += 1
+            elif (self.bomb[self.x+1][self.y+1]):
+                bombCount += 1
+            elif (self.bomb[self.x+1][self.y-1]):
+                bombCount += 1
+            elif (self.bomb[self.x+1][self.y]):
+                bombCount += 1
+            elif (self.bomb[self.x-1][self.y-1]):
+                bombCount += 1
+            elif (self.bomb[self.x-1][self.y+1]):
+                bombCount += 1
+            elif (self.bomb[self.x-1][self.y]):
+                bombCount += 1
 
 
 Mine = Minesweeper()
