@@ -1,5 +1,6 @@
 import java.util.Scanner; 
 import java.util.*; 
+
 public class Main
 {
 	public static void main(String[] args) {
@@ -11,7 +12,7 @@ public class Main
 	    System.out.println("How many colums due to want?");
 	    String UserColsobject = User.nextLine();
 	    
-	    System.out.println("Propibility of Mines?(In Persentage, no 25 only 0.25)");
+	    System.out.println("Probability of Mines?(In Percentage, no 25 only 0.25)");
 	    String probability = User.nextLine();
 	    double a = Double.parseDouble(probability);
 	    System.out.println("Click a Squares(x)");

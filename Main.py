@@ -1,5 +1,6 @@
 import minesweeper as Main
 
+
 Mine = Main()
 Mine.create_grid()
 Mine.set_bomb()
